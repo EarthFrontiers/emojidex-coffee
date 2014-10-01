@@ -32,7 +32,10 @@ class Emojidex::Collection
   _categorize: ->
     @category = {}
     for moji in @emoji
-      @category[emoji.category].push emoji.code
+      if emoji.category is null
+        @category['uncategorized'].push emoji.code
+      else
+        @category[emoji.category].push emoji.code
 
  # palettize: ->
  #   if @emojis_data_array.length is 2
